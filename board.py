@@ -1,12 +1,22 @@
 import pieces
 
-size = 8 
+size = 8
+board_map = [[None]*size]*size
 
-square_pairing = pieces.white_square + " " +pieces.black_square
 
-while(size > 0):
-    print(f"{size} " + (square_pairing + " ") * 4)
-    size -= 1
-    square_pairing = square_pairing[::-1]
+def is_even(number):
+    return number % 2 == 0
+
+def decide_square(row, column):
+    is_row_even = is_even(row)
+    return pieces.black_square if is_even(column) == is_row_even else pieces.white_square
+
+for row, i in enumerate(board_map):
+    print(size-row, end=" ")
+    for column, j in enumerate(i):
+        square = decide_square(row, column)
+        print(square, end=" ")
+    print()
 
 print("  A B C D E F G H")
+
