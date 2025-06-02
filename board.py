@@ -1,13 +1,14 @@
 import pieces
 
 size = 8
-board_map = [[None]*size]*size
-
+board_map = [['' for _ in range (size)] for _ in range (size)] 
 
 def is_even(number):
     return number % 2 == 0
 
 def decide_square(row, column):
+    if board_map[row][column] != '':
+        return board_map[row][column]
     is_row_even = is_even(row)
     return pieces.black_square if is_even(column) == is_row_even else pieces.white_square
 
