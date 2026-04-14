@@ -1,8 +1,7 @@
 from board.board import Board
-import pieces
+from board import board_constants
+import board.pieces as pieces
 import os
-
-size = 8
 
 def is_even(number):
     return number % 2 == 0
@@ -18,7 +17,7 @@ def render_board(board: Board):
     os.system('cls')
     board_map = board.get_board_map()
     for row, i in enumerate(board_map):
-        print(size-row, end=" ")
+        print(board_constants.size-row, end=" ")
         for column, _ in enumerate(i):
             square = decide_square(board_map, row, column)
             print(square, end=" ")

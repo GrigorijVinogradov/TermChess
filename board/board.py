@@ -1,7 +1,8 @@
+from board import board_constants
+
 class Board:
     def __init__(self):
-        size = 8
-        self.board_map: list[list[str]] = [['' for _ in range (size)] for _ in range (size)]
+        self.board_map: list[list[str]] = [['' for _ in range (board_constants.size)] for _ in range (board_constants.size)]
 
     def clear_board(self):
         for row_id, row in enumerate(self.board_map):

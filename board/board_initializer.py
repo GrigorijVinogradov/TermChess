@@ -1,7 +1,6 @@
+from board import board_constants
 from board.board import Board
-import pieces
-
-size = 8
+import board.pieces as pieces
 
 def initialize_board(board: Board):
     initialize_pawns(board)
@@ -11,7 +10,7 @@ def initialize_board(board: Board):
     initialize_royals(board)
 
 def initialize_symmetrical_pieces(board: Board, row, column, piece):
-    board.set_piece(row, size-column-1, piece)
+    board.set_piece(row, board_constants.size-column-1, piece)
     board.set_piece(row, column, piece)
 
 def initialize_pawns(board: Board):
