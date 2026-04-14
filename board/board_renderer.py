@@ -1,3 +1,4 @@
+from board.board import Board
 import pieces
 import os
 
@@ -13,8 +14,9 @@ def decide_square(board_map, row, column):
     return pieces.black_square if is_even(column) == is_row_even else pieces.white_square
 
 # Main ☆*: .｡. o(≧▽≦)o .｡.:*☆
-def render_board(board_map):
+def render_board(board: Board):
     os.system('cls')
+    board_map = board.get_board_map()
     for row, i in enumerate(board_map):
         print(size-row, end=" ")
         for column, _ in enumerate(i):
