@@ -1,11 +1,12 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
 import board.pieces as pieces
+import board.colors as Colors
 import re
 
 from board.board import Board
 
-def turn(board: Board, current_color: str):
+def turn(board: Board, current_color: Colors.Color):
     was_turn_made = False
     while(was_turn_made == False):
         turn_input = input("Turn: ")
@@ -32,10 +33,10 @@ def validate_input(player_input):
 
 def validate_order(player_input, board: Board, expected_color):
     parsed_input = parse_input(player_input)
-    if(expected_color == "white"):
+    if(expected_color == Colors.Color.White):
         piece = board.get_piece(parsed_input[0], parsed_input[1])
         return piece in pieces.white_pieces
-    if(expected_color == "black"):
+    if(expected_color == Colors.Color.Black):
         piece = board.get_piece(parsed_input[0], parsed_input[1])
         return piece in pieces.black_pieces
     return True
@@ -55,6 +56,6 @@ board_initializer.initialize_board(chessboard)
 
 while True:
     board_renderer.render_board(chessboard)
-    turn(chessboard, "white")
+    turn(chessboard, Colors.Color.White)
     board_renderer.render_board(chessboard)
-    turn(chessboard, "black")
+    turn(chessboard, Colors.Color.Black)
