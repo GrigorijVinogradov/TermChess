@@ -10,16 +10,17 @@ def turn(board: Board, current_color: Colors.Color):
     was_turn_made = False
     while(was_turn_made == False):
         turn_input = input("Turn: ")
-        is_valid_turn = validate_input(turn_input) and validate_order(turn_input, board, current_color)
-        if(is_valid_turn):
+        try:
+            validate_order(turn_input, board, current_color)
             parsed_input = parse_input(turn_input)
             board.move_piece(parsed_input[0], parsed_input[1], parsed_input[2], parsed_input[3])
             was_turn_made = True
-        else: 
-            print("Invalid Turn!")
+        except ValueError as e: 
+            print("Invalid Turn! " + str(e))
     return board.get_board_map()
 
 def parse_input(turn_input):
+    validate_input(turn_input)
     turn_input = turn_input.replace(" ", "")
     fromL = parse_letter_input(turn_input[0])
     fromD = parse_digit_input(turn_input[1]) 
@@ -29,17 +30,21 @@ def parse_input(turn_input):
 
 def validate_input(player_input):
     pattern = re.compile(r'[A-H][1-8]\s*[A-H][1-8]\s*', re.IGNORECASE)
-    return bool(pattern.match(player_input))
+    if(bool(pattern.match(player_input)) == False):
+        raise ValueError("Input is formatted incorrectly ([A-H][1-8] [A-H][1-8] expected)")
 
 def validate_order(player_input, board: Board, expected_color):
     parsed_input = parse_input(player_input)
+
+    expected_piece_set = []
     if(expected_color == Colors.Color.White):
-        piece = board.get_piece(parsed_input[0], parsed_input[1])
-        return piece in pieces.white_pieces
+        expected_piece_set = pieces.white_pieces
     if(expected_color == Colors.Color.Black):
-        piece = board.get_piece(parsed_input[0], parsed_input[1])
-        return piece in pieces.black_pieces
-    return True
+        expected_piece_set = pieces.black_pieces
+        
+    piece = board.get_piece(parsed_input[0], parsed_input[1])
+    if(piece not in expected_piece_set):
+        raise ValueError("Played piece is not the right color")
 
 def parse_letter_input(letter):
     letter = letter.lower()
