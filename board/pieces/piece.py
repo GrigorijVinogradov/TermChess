@@ -1,9 +1,9 @@
 from board.colorizer import Colorizer
-from board.constants.piece_constants import Piece_Types
-from board.constants.colors import Color
+from board.pieces.enums.piece_icons import Piece_Icons
+from board.pieces.enums.colors import Color
 
 class Piece():
-    icon = Piece_Types.none
+    icon = Piece_Icons.none
     color: Color
 
     def __init__(self, color):

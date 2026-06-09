@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Piece_Types(Enum): 
+class Piece_Icons(Enum): 
     none = '◼'
     pawn = '♙'
     knight = '♘'

@@ -1,5 +1,5 @@
 from board.constants import board_constants
-from board.pieces_v2.piece import Piece
+from board.pieces.piece import Piece
 
 class Board:
     def __init__(self):
