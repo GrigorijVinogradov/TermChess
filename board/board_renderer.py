@@ -1,7 +1,7 @@
 from board.board import Board
 from board.constants import board_constants
 import os
-from board.constants.colors import Color
+from board.pieces.enums.colors import Color
 from board.pieces.piece import Piece
 
 def is_even(number):

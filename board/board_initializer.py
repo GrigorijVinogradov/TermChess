@@ -1,6 +1,6 @@
 from board.constants import board_constants
 from board.board import Board
-from board.constants.colors import Color
+from board.pieces.enums.colors import Color
 from board.pieces.pawn import Pawn 
 from board.pieces.rook import Rook 
 from board.pieces.knight import Knight 

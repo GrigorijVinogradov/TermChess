@@ -1,6 +1,6 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
-import board.constants.colors as Colors
+import board.pieces.enums.colors as Colors
 import re
 
 from board.board import Board
