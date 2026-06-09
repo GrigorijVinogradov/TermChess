@@ -1,9 +1,9 @@
 from board.pieces.piece import Piece
-from board.pieces.piece_types import Piece_Types
+from board.pieces.piece_icons import Piece_Icons
 from board.constants.colors import Color
 
 class Queen(Piece):
-    icon = Piece_Types.queen
+    icon = Piece_Icons.queen
     color: Color
 
     def __init__(self, color):
