@@ -1,6 +1,5 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
-import board.pieces as pieces
 import board.constants.colors as Colors
 import re
 

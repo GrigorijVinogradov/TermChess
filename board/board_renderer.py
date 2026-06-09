@@ -1,9 +1,8 @@
 from board.board import Board
 from board.constants import board_constants
-import board.pieces as pieces
 import os
+from board.constants.colors import Color
 from board.pieces_v2.piece import Piece
-from board.pieces_v2.knight import Knight
 
 def is_even(number):
     return number % 2 == 0
@@ -12,10 +11,12 @@ def decide_square(board_map, row, column):
     piece = board_map[row][column]
     if isinstance(piece, Piece) :
         return piece.Draw()
-    if board_map[row][column] != '':
-        return board_map[row][column]
+
     is_row_even = is_even(row)
-    return pieces.black_square if is_even(column) == is_row_even else pieces.white_square
+    should_be_black = is_even(column) == is_row_even
+    color = Color.Black if should_be_black else Color.White
+    square = Piece(color)
+    return square.Draw()
 
 # Main ☆*: .｡. o(≧▽≦)o .｡.:*☆
 def render_board(board: Board):
