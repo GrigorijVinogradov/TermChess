@@ -1,8 +1,9 @@
-from board import board_constants
+from board.constants import board_constants
+from board.pieces_v2.piece import Piece
 
 class Board:
     def __init__(self):
-        self.board_map: list[list[str]] = [['' for _ in range (board_constants.size)] for _ in range (board_constants.size)]
+        self.board_map: list[list[Piece]] = [['' for _ in range (board_constants.size)] for _ in range (board_constants.size)]
 
     def clear_board(self):
         for row_id, row in enumerate(self.board_map):
@@ -14,11 +15,11 @@ class Board:
         self.set_piece(toD, toL, from_piece)
         self.set_piece(fromD, fromL, '')
 
-    def get_piece(self, cordL, cordD):
+    def get_piece(self, cordL, cordD) -> Piece:
         return self.board_map[cordL][cordD]
 
     def set_piece(self, cordL, cordD, piece):
         self.board_map[cordL][cordD] = piece 
 
-    def get_board_map(self) -> list[list[str]]:
+    def get_board_map(self) -> list[list[Piece]]:
         return self.board_map

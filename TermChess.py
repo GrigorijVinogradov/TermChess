@@ -1,10 +1,10 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
-import board.pieces as pieces
-import board.colors as Colors
+import board.constants.colors as Colors
 import re
 
 from board.board import Board
+from board.pieces_v2.piece import Piece
 
 def turn(board: Board, current_color: Colors.Color):
     was_turn_made = False
@@ -36,14 +36,11 @@ def validate_input(player_input):
 def validate_order(player_input, board: Board, expected_color):
     parsed_input = parse_input(player_input)
 
-    expected_piece_set = []
-    if(expected_color == Colors.Color.White):
-        expected_piece_set = pieces.white_pieces
-    if(expected_color == Colors.Color.Black):
-        expected_piece_set = pieces.black_pieces
-        
     piece = board.get_piece(parsed_input[0], parsed_input[1])
-    if(piece not in expected_piece_set):
+    if not isinstance(piece, Piece):
+        raise ValueError("No Piece here!")
+
+    if piece.color != expected_color:
         raise ValueError("Played piece is not the right color")
 
 def parse_letter_input(letter):
@@ -53,8 +50,6 @@ def parse_letter_input(letter):
 
 def parse_digit_input(digit):
     return 8 - int(digit)
-
-# chessboard = board.get_default_board()
 
 chessboard = Board()
 board_initializer.initialize_board(chessboard)
