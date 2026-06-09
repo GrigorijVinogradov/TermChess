@@ -9,7 +9,7 @@ def is_even(number):
 
 def decide_square(board_map, row, column):
     piece = board_map[row][column]
-    if isinstance(piece, Piece) :
+    if isinstance(piece, Piece):
         return piece.Draw()
 
     is_row_even = is_even(row)
