@@ -15,7 +15,7 @@ class Board:
         self.set_piece(toD, toL, from_piece)
         self.set_piece(fromD, fromL, '')
 
-    def get_piece(self, cordL, cordD):
+    def get_piece(self, cordL, cordD) -> Piece:
         return self.board_map[cordL][cordD]
 
     def set_piece(self, cordL, cordD, piece):

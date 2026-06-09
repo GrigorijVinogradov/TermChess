@@ -29,8 +29,8 @@ def initialize_pawns(board: Board):
 def initialize_rooks(board: Board):
     white_rook = Rook(Color.White)
     black_rook = Rook(Color.Black)
-    initialize_symmetrical_pieces(board, 0, 0, black_rook.Draw())
-    initialize_symmetrical_pieces(board, 7, 0, white_rook.Draw())
+    initialize_symmetrical_pieces(board, 0, 0, black_rook)
+    initialize_symmetrical_pieces(board, 7, 0, white_rook)
 
 def initialize_knights(board: Board):
     white_knight = Knight(Color.White)
