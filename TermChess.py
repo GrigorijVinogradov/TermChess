@@ -1,7 +1,7 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
 import board.pieces as pieces
-import board.colors as Colors
+import board.constants.colors as Colors
 import re
 
 from board.board import Board
@@ -53,8 +53,6 @@ def parse_letter_input(letter):
 
 def parse_digit_input(digit):
     return 8 - int(digit)
-
-# chessboard = board.get_default_board()
 
 chessboard = Board()
 board_initializer.initialize_board(chessboard)

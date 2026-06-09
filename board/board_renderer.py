@@ -1,12 +1,17 @@
 from board.board import Board
-from board import board_constants
+from board.constants import board_constants
 import board.pieces as pieces
 import os
+from board.pieces_v2.piece import Piece
+from board.pieces_v2.knight import Knight
 
 def is_even(number):
     return number % 2 == 0
 
 def decide_square(board_map, row, column):
+    piece = board_map[row][column]
+    if isinstance(piece, Piece) :
+        return piece.Draw()
     if board_map[row][column] != '':
         return board_map[row][column]
     is_row_even = is_even(row)
