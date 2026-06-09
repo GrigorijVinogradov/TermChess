@@ -1,12 +1,12 @@
 from board.constants import board_constants
 from board.board import Board
 from board.constants.colors import Color
-from board.pieces_v2.pawn import Pawn 
-from board.pieces_v2.rook import Rook 
-from board.pieces_v2.knight import Knight 
-from board.pieces_v2.bishop import Bishop 
-from board.pieces_v2.queen import Queen 
-from board.pieces_v2.king import King 
+from board.pieces.pawn import Pawn 
+from board.pieces.rook import Rook 
+from board.pieces.knight import Knight 
+from board.pieces.bishop import Bishop 
+from board.pieces.queen import Queen 
+from board.pieces.king import King 
 
 def initialize_board(board: Board):
     initialize_pawns(board)

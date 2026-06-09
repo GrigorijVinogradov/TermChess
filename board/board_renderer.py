@@ -2,7 +2,7 @@ from board.board import Board
 from board.constants import board_constants
 import os
 from board.constants.colors import Color
-from board.pieces_v2.piece import Piece
+from board.pieces.piece import Piece
 
 def is_even(number):
     return number % 2 == 0

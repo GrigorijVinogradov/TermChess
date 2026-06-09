@@ -1,5 +1,5 @@
 from board.colorizer import Colorizer
-from board.constants.piece_constants import Piece_Types
+from board.pieces.piece_types import Piece_Types
 from board.constants.colors import Color
 
 class Piece():

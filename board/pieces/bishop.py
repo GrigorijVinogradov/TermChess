@@ -1,5 +1,5 @@
-from board.pieces_v2.piece import Piece
-from board.constants.piece_constants import Piece_Types
+from board.pieces.piece import Piece
+from board.pieces.piece_types import Piece_Types
 from board.constants.colors import Color
 
 class Bishop(Piece):

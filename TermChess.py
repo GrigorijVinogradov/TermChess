@@ -4,7 +4,7 @@ import board.constants.colors as Colors
 import re
 
 from board.board import Board
-from board.pieces_v2.piece import Piece
+from board.pieces.piece import Piece
 
 def turn(board: Board, current_color: Colors.Color):
     was_turn_made = False
