@@ -1,12 +1,12 @@
 from board.constants import board_constants
 from board.board import Board
 from board.pieces.enums.colors import Color
-from board.pieces.pawn import Pawn 
-from board.pieces.rook import Rook 
-from board.pieces.knight import Knight 
-from board.pieces.bishop import Bishop 
-from board.pieces.queen import Queen 
-from board.pieces.king import King 
+from board.pieces.types.pawn import Pawn 
+from board.pieces.types.rook import Rook 
+from board.pieces.types.knight import Knight 
+from board.pieces.types.bishop import Bishop 
+from board.pieces.types.queen import Queen 
+from board.pieces.types.king import King 
 
 def initialize_board(board: Board):
     initialize_pawns(board)
