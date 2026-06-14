@@ -1,10 +1,11 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
-import board.pieces.enums.colors as Colors
+from board.coordinates import Coordinates
+import pieces.enums.colors as Colors
 import re
 
 from board.board import Board
-from board.pieces.piece import Piece
+from pieces.piece import Piece
 
 def turn(board: Board, current_color: Colors.Color):
     was_turn_made = False
@@ -13,7 +14,9 @@ def turn(board: Board, current_color: Colors.Color):
         try:
             validate_order(turn_input, board, current_color)
             parsed_input = parse_input(turn_input)
-            board.move_piece(parsed_input[0], parsed_input[1], parsed_input[2], parsed_input[3])
+            from_coords = Coordinates(parsed_input[0], parsed_input[1]) 
+            to_coords = Coordinates(parsed_input[2], parsed_input[3])
+            board.move_piece(from_coords, to_coords)
             was_turn_made = True
         except ValueError as e: 
             print("Invalid Turn! " + str(e))
@@ -35,8 +38,9 @@ def validate_input(player_input):
 
 def validate_order(player_input, board: Board, expected_color):
     parsed_input = parse_input(player_input)
+    coords = Coordinates(parsed_input[0], parsed_input[1])
 
-    piece = board.get_piece(parsed_input[0], parsed_input[1])
+    piece = board.get_piece(coords)
     if not isinstance(piece, Piece):
         raise ValueError("No Piece here!")
 
