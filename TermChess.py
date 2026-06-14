@@ -7,12 +7,13 @@ import re
 from board.board import Board
 from pieces.piece import Piece
 
-def turn(board: Board, current_color: Colors.Color):
+def turn(current_color: Colors.Color):
+    board = Board()
     was_turn_made = False
     while(was_turn_made == False):
         turn_input = input("Turn: ")
         try:
-            validate_order(turn_input, board, current_color)
+            validate_order(turn_input, current_color)
             parsed_input = parse_input(turn_input)
             from_coords = Coordinates(parsed_input[0], parsed_input[1]) 
             to_coords = Coordinates(parsed_input[2], parsed_input[3])
@@ -36,7 +37,8 @@ def validate_input(player_input):
     if(bool(pattern.match(player_input)) == False):
         raise ValueError("Input is formatted incorrectly ([A-H][1-8] [A-H][1-8] expected)")
 
-def validate_order(player_input, board: Board, expected_color):
+def validate_order(player_input, expected_color):
+    board = Board()
     parsed_input = parse_input(player_input)
     coords = Coordinates(parsed_input[0], parsed_input[1])
 
@@ -55,11 +57,10 @@ def parse_letter_input(letter):
 def parse_digit_input(digit):
     return 8 - int(digit)
 
-chessboard = Board()
-board_initializer.initialize_board(chessboard)
+board_initializer.initialize_board()
 
 while True:
-    board_renderer.render_board(chessboard)
-    turn(chessboard, Colors.Color.White)
-    board_renderer.render_board(chessboard)
-    turn(chessboard, Colors.Color.Black)
+    board_renderer.render_board()
+    turn(Colors.Color.White)
+    board_renderer.render_board()
+    turn(Colors.Color.Black)

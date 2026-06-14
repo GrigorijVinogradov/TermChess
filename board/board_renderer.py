@@ -19,8 +19,9 @@ def decide_square(board_map, row, column):
     return square.Draw()
 
 # Main ☆*: .｡. o(≧▽≦)o .｡.:*☆
-def render_board(board: Board):
+def render_board():
     os.system('cls')
+    board = Board()
     board_map = board.get_board_map()
     for row, i in enumerate(board_map):
         print(board_constants.size-row, end=" ")
