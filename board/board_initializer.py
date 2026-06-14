@@ -1,5 +1,6 @@
 from board.constants import board_constants
 from board.board import Board
+from board.coordinates import Coordinates
 from pieces.enums.colors import Color
 from pieces.types.pawn import Pawn 
 from pieces.types.rook import Rook 
@@ -13,43 +14,69 @@ def initialize_board(board: Board):
     initialize_rooks(board)
     initialize_knights(board)
     initialize_bishops(board)
-    initialize_royals(board)
+    initialize_queens(board)
+    initialize_kings(board)
 
-def initialize_symmetrical_pieces(board: Board, row, column, piece):
-    board.set_piece(row, board_constants.size-column-1, piece)
-    board.set_piece(row, column, piece)
+def initialize_symmetrical_pieces(board: Board, coords: Coordinates, piece):
+    opposite_coords = Coordinates(coords.l, board_constants.size-coords.d-1)
+    board.set_piece(coords, piece)
+    board.set_piece(opposite_coords, piece)
 
 def initialize_pawns(board: Board):
     white_pawn = Pawn(Color.White)
     black_pawn = Pawn(Color.Black)
     for column, _ in enumerate(board.get_board_map()):
-        board.set_piece(1, column, black_pawn)
-        board.set_piece(6, column, white_pawn)
+        coords_white = Coordinates(6, column)
+        coords_black = Coordinates(1, column)
+        board.set_piece(coords_white, white_pawn)
+        board.set_piece(coords_black, black_pawn)
 
 def initialize_rooks(board: Board):
     white_rook = Rook(Color.White)
     black_rook = Rook(Color.Black)
-    initialize_symmetrical_pieces(board, 0, 0, black_rook)
-    initialize_symmetrical_pieces(board, 7, 0, white_rook)
+
+    white_coords = Coordinates(7, 0)
+    black_coords = Coordinates(0, 0)
+
+    initialize_symmetrical_pieces(board, white_coords, white_rook)
+    initialize_symmetrical_pieces(board, black_coords, black_rook)
 
 def initialize_knights(board: Board):
     white_knight = Knight(Color.White)
     black_knight = Knight(Color.Black)
-    initialize_symmetrical_pieces(board, 0, 1, black_knight)
-    initialize_symmetrical_pieces(board, 7, 1, white_knight)
+
+    white_coords = Coordinates(7, 1)
+    black_coords = Coordinates(0, 1)
+
+    initialize_symmetrical_pieces(board, white_coords, white_knight)
+    initialize_symmetrical_pieces(board, black_coords, black_knight)
 
 def initialize_bishops(board: Board):
     white_bishop = Bishop(Color.White)
     black_bishop = Bishop(Color.Black)
-    initialize_symmetrical_pieces(board, 0, 2, black_bishop)
-    initialize_symmetrical_pieces(board, 7, 2, white_bishop)
 
-def initialize_royals(board: Board):
+    white_coords = Coordinates(7, 2)
+    black_coords = Coordinates(0, 2)
+
+    initialize_symmetrical_pieces(board, white_coords, white_bishop)
+    initialize_symmetrical_pieces(board, black_coords, black_bishop)
+
+def initialize_queens(board: Board):
     white_queen = Queen(Color.White)
     black_queen = Queen(Color.Black)
+
+    white_queen_coords = Coordinates(7, 3)
+    black_queen_coords = Coordinates(0, 3)
+
+    board.set_piece(white_queen_coords, white_queen)
+    board.set_piece(black_queen_coords, black_queen)
+
+def initialize_kings(board: Board):
     white_king = King(Color.White)
     black_king = King(Color.Black)
-    board.set_piece(0, 3, black_queen)
-    board.set_piece(0, 4, black_king)
-    board.set_piece(7, 3, white_queen)
-    board.set_piece(7, 4, white_king)
+
+    white_king_coords = Coordinates(7, 4)
+    black_king_coords = Coordinates(0, 4)
+
+    board.set_piece(white_king_coords, white_king)
+    board.set_piece(black_king_coords, black_king)

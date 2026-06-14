@@ -1,4 +1,5 @@
 from board.constants import board_constants
+from board.coordinates import Coordinates
 from pieces.piece import Piece
 
 class Board:
@@ -18,8 +19,8 @@ class Board:
     def get_piece(self, cordL, cordD) -> Piece:
         return self.board_map[cordL][cordD]
 
-    def set_piece(self, cordL, cordD, piece):
-        self.board_map[cordL][cordD] = piece 
+    def set_piece(self, coordinates: Coordinates, piece):
+        self.board_map[coordinates.l][coordinates.d] = piece 
 
     def get_board_map(self) -> list[list[Piece]]:
         return self.board_map
