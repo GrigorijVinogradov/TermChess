@@ -1,8 +1,8 @@
 from board.board import Board
 from board.constants import board_constants
 import os
-from board.pieces.enums.colors import Color
-from board.pieces.piece import Piece
+from pieces.enums.colors import Color
+from pieces.piece import Piece
 
 def is_even(number):
     return number % 2 == 0

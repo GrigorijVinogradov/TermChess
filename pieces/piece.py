@@ -1,6 +1,6 @@
-from board.colorizer import Colorizer
-from board.pieces.enums.piece_icons import Piece_Icons
-from board.pieces.enums.colors import Color
+from util.colorizer import Colorizer
+from pieces.enums.piece_icons import Piece_Icons
+from pieces.enums.colors import Color
 
 class Piece():
     icon = Piece_Icons.none

@@ -1,10 +1,10 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
-import board.pieces.enums.colors as Colors
+import pieces.enums.colors as Colors
 import re
 
 from board.board import Board
-from board.pieces.piece import Piece
+from pieces.piece import Piece
 
 def turn(board: Board, current_color: Colors.Color):
     was_turn_made = False
