@@ -1,3 +1,5 @@
+import copy
+
 from board.constants import board_constants
 from board.board import Board
 from board.coordinates import Coordinates
@@ -30,8 +32,8 @@ def initialize_pawns():
     for column, _ in enumerate(board.get_board_map()):
         coords_white = Coordinates(6, column)
         coords_black = Coordinates(1, column)
-        board.set_piece(coords_white, white_pawn)
-        board.set_piece(coords_black, black_pawn)
+        board.set_piece(coords_white, copy.deepcopy(white_pawn))
+        board.set_piece(coords_black, copy.deepcopy(black_pawn))
 
 def initialize_rooks():
     white_rook = Rook(Color.White)

@@ -10,13 +10,13 @@ def is_even(number):
 def decide_square(board_map, row, column):
     piece = board_map[row][column]
     if isinstance(piece, Piece):
-        return piece.Draw()
+        return piece.draw()
 
     is_row_even = is_even(row)
     should_be_black = is_even(column) == is_row_even
     color = Color.Black if should_be_black else Color.White
     square = Piece(color)
-    return square.Draw()
+    return square.draw()
 
 # Main ☆*: .｡. o(≧▽≦)o .｡.:*☆
 def render_board():

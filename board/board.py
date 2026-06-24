@@ -17,7 +17,8 @@ class Board:
                 self.board_map[row_id][column_id] = ''
 
     def move_piece(self, from_coords: Coordinates, to_coords: Coordinates):
-        from_piece = self.get_piece(from_coords)
+        from_piece: Piece = self.get_piece(from_coords)
+        from_piece.validate_movement_pattern(from_coords, to_coords)
         self.set_piece(to_coords, from_piece)
         self.set_piece(from_coords, '')
 
