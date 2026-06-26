@@ -7,4 +7,4 @@ class Coordinates:
         self.d = d
 
     def get_as_array(self):
-        return [self.l][self.d]
+        return [self.l, self.d]
