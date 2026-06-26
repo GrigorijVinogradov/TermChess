@@ -1,4 +1,5 @@
 from board.coordinates import Coordinates
+from pieces.collision_checker import check_collision, get_direct_colliding_piece
 from pieces.piece import Piece
 from pieces.enums.piece_icons import Piece_Icons
 from pieces.enums.colors import Color
@@ -22,5 +23,7 @@ class Pawn(Piece):
 
         if to_coord.d != from_coord.d - 1*direction:
             raise ValueError("The pawn can only move one field")
+
+        check_collision(get_direct_colliding_piece, from_coord, to_coord, self.color)
 
         self.step_count += 1

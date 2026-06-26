@@ -1,7 +1,6 @@
 
 from board.board import Board
 
-
 @staticmethod
 def check_collision(collision_method, from_coord, to_coord, color):
     colliding_coords = collision_method(from_coord, to_coord)
@@ -12,3 +11,10 @@ def check_collision(collision_method, from_coord, to_coord, color):
                 return
 
             raise ValueError(colliding_piece.draw() + " is in the way at " + colliding_coords.to_string())
+    
+@staticmethod
+def get_direct_colliding_piece(from_coord, to_coord):
+    board = Board()
+    piece = board.get_piece(to_coord)
+    if piece != '':
+            return to_coord
