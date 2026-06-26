@@ -1,7 +1,8 @@
 from board.coordinates import Coordinates
-from pieces.patterns.diagonal_checker import is_diagonal
+from pieces.collision_checker import check_collision
+from pieces.patterns.diagonal_checker import get_diagonal_colliding_piece, is_diagonal
 from pieces.patterns.radius_checker import is_in_radius
-from pieces.patterns.straight_checker import is_straight
+from pieces.patterns.straight_checker import get_straight_colliding_piece, is_straight
 from pieces.piece import Piece
 from pieces.enums.piece_icons import Piece_Icons
 from pieces.enums.colors import Color
@@ -19,3 +20,6 @@ class King(Piece):
 
         if not is_in_radius(from_coord, to_coord, 1):
             raise ValueError("The King can only move one tile diagonally or straight")
+
+        check_collision(get_straight_colliding_piece, from_coord, to_coord, self.color)
+        check_collision(get_diagonal_colliding_piece, from_coord, to_coord, self.color)
