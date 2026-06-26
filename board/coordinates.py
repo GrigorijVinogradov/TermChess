@@ -1,6 +1,6 @@
 class Coordinates:
-    d: int
     l: int
+    d: int
 
     def __init__(self, l, d):
         self.d = l
