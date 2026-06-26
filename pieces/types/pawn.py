@@ -19,8 +19,8 @@ class Pawn(Piece):
             direction = -1
 
         if to_coord.d == from_coord.d - 2*direction and self.step_count == 0:
-            self.step_count += 1 
             check_collision(get_straight_colliding_piece, from_coord, to_coord, self.color)
+            self.step_count += 1 
             return
 
         if to_coord.d != from_coord.d - 1*direction:
