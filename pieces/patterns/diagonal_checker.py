@@ -38,7 +38,7 @@ def get_diagonal_colliding_piece(from_coord: Coordinates, to_coord: Coordinates)
         d = range_d[i]
         l = range_l[i]
         coords = Coordinates(l, d)
-        piece = board.get_piece(Coordinates(l, d))
+        piece = board.get_piece(coords)
         if piece != '':
             return coords
 
