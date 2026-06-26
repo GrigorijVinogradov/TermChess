@@ -23,7 +23,7 @@ def is_diagonal(from_coord: Coordinates, to_coord: Coordinates):
 @staticmethod
 def get_diagonal_colliding_piece(from_coord: Coordinates, to_coord: Coordinates) -> Coordinates|None:
     if not is_diagonal(from_coord, to_coord):
-        raise ValueError("Path is not diagonal!")
+       return None
          
     dist_l = from_coord.d - to_coord.d
     range_l = get_range(from_coord.d, to_coord.d, dist_l)
