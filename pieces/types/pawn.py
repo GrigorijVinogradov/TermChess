@@ -16,11 +16,11 @@ class Pawn(Piece):
         if self.color is Color.Black:
             direction = -1
 
-        if to_coord.l == from_coord.l - 2*direction and self.step_count == 0:
+        if to_coord.d == from_coord.d - 2*direction and self.step_count == 0:
             self.step_count += 1 
             return
 
-        if to_coord.l != from_coord.l - 1*direction:
+        if to_coord.d != from_coord.d - 1*direction:
             raise ValueError("The pawn can only move one field")
 
         self.step_count += 1

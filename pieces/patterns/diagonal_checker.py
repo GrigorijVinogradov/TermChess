@@ -4,8 +4,8 @@ from board.coordinates import Coordinates
 
 @staticmethod
 def is_diagonal(from_coord: Coordinates, to_coord: Coordinates):
-        from_l = from_coord.l
-        from_d = from_coord.d
+        from_l = from_coord.d
+        from_d = from_coord.l
 
         for i in range(1, board_constants.size+1, 1):
             possible_coords = [
@@ -25,11 +25,11 @@ def get_diagonal_colliding_piece(from_coord: Coordinates, to_coord: Coordinates)
     if not is_diagonal(from_coord, to_coord):
         raise ValueError("Path is not diagonal!")
          
-    dist_l = from_coord.l - to_coord.l
-    range_l = get_range(from_coord.l, to_coord.l, dist_l)
+    dist_l = from_coord.d - to_coord.d
+    range_l = get_range(from_coord.d, to_coord.d, dist_l)
 
-    dist_d = from_coord.d - to_coord.d
-    range_d = get_range(from_coord.d, to_coord.d, dist_d)
+    dist_d = from_coord.l - to_coord.l
+    range_d = get_range(from_coord.l, to_coord.l, dist_d)
 
     length = abs(min(dist_l, dist_d))
 

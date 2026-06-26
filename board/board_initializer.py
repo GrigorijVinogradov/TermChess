@@ -21,7 +21,7 @@ def initialize_board():
 
 def initialize_symmetrical_pieces(coords: Coordinates, piece):
     board = Board()
-    opposite_coords = Coordinates(coords.l, board_constants.size-coords.d-1)
+    opposite_coords = Coordinates(coords.d, board_constants.size-coords.l-1)
     board.set_piece(coords, piece)
     board.set_piece(opposite_coords, piece)
 

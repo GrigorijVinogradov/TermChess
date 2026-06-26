@@ -1,14 +1,14 @@
 class Coordinates:
-    l: int
     d: int
+    l: int
 
     def __init__(self, l, d):
-        self.l = l
-        self.d = d
+        self.d = l
+        self.l = d
 
     def get_as_array(self):
-        return [self.l, self.d]
+        return [self.d, self.l]
 
     def to_string(self) -> str:
         letters = "ABCDEFGH"
-        return letters[-self.l+1] + str(self.d-1)
+        return letters[self.l] + str(abs(8-self.d))

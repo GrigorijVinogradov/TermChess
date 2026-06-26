@@ -23,10 +23,10 @@ class Board:
         self.set_piece(from_coords, '')
 
     def get_piece(self, coordinates: Coordinates) -> Piece:
-        return self.board_map[coordinates.l][coordinates.d]
+        return self.board_map[coordinates.d][coordinates.l]
 
     def set_piece(self, coordinates: Coordinates, piece):
-        self.board_map[coordinates.l][coordinates.d] = piece 
+        self.board_map[coordinates.d][coordinates.l] = piece 
 
     def get_board_map(self) -> list[list[Piece]]:
         return self.board_map
