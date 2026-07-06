@@ -1,3 +1,4 @@
+from board.board import Board
 from board.coordinates import Coordinates
 from pieces.collision_checker import check_collision, get_direct_colliding_piece
 from pieces.patterns.straight_checker import get_straight_colliding_piece
@@ -23,6 +24,8 @@ class Pawn(Piece):
         if to_coord.d != from_coord.d - 1*direction:
             raise ValueError("The pawn can only move one field")
 
+        self.validate_attack(from_coord, to_coord)
+
         check_collision(get_direct_colliding_piece, from_coord, to_coord, self.color)
 
         self.step_count += 1
@@ -35,6 +38,17 @@ class Pawn(Piece):
             return True
 
         return False
+
+    def validate_attack(self, from_coord: Coordinates, to_coord: Coordinates):
+        l_dist = abs(to_coord.l - from_coord.l)
+        if l_dist > 1:
+            raise ValueError("Dat is zu schräg!")
+
+        if l_dist == 1:
+            board = Board()
+            attacked_piece = board.get_piece(to_coord)
+            if attacked_piece == '' or attacked_piece.color == self.color:
+                raise ValueError("Can only move diagonally if attacking")
 
     def determine_direction(self) -> int:
         direction = 1
