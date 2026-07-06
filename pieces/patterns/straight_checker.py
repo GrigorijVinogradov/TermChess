@@ -27,12 +27,12 @@ def get_straight_colliding_piece(from_coord: Coordinates, to_coord: Coordinates)
     if(abs(dist_d) > 0):
         dist = abs(dist_d)
         list_l = list(get_range(from_coord.d, to_coord.d, dist_d))
-        list_d = np.repeat(from_coord.l, dist)
+        list_d = np.repeat(from_coord.l, dist).tolist()
 
     if(abs(dist_l) > 0):
         dist = abs(dist_l)
         list_d = list(get_range(from_coord.l, to_coord.l, dist_l))
-        list_l = np.repeat(from_coord.d, dist)
+        list_l = np.repeat(from_coord.d, dist).tolist()
 
     
     board = Board()
