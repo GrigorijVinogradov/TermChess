@@ -1,4 +1,4 @@
-# Chess in the Terminal
-Written in Python
-
-Just for fun, only windows specific for now
+# TermChess
+Chess in the Terminal
+Mainly just an exercise for myself to use Python in a larger Project than i used it for previously 
+Only windows specific for now
