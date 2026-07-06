@@ -25,9 +25,7 @@ class Pawn(Piece):
             raise ValueError("The pawn can only move one field")
 
         self.validate_attack(from_coord, to_coord)
-
         check_collision(get_direct_colliding_piece, from_coord, to_coord, self.color)
-
         self.step_count += 1
 
     def is_valid_two_field_step(self, from_coord: Coordinates, to_coord: Coordinates) -> bool:
