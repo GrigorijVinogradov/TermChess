@@ -42,7 +42,7 @@ class Pawn(Piece):
     def validate_attack(self, from_coord: Coordinates, to_coord: Coordinates):
         l_dist = abs(to_coord.l - from_coord.l)
         if l_dist > 1:
-            raise ValueError("Dat is zu schräg!")
+            raise ValueError("Diagonal Distance is too far")
 
         if l_dist == 1:
             board = Board()
