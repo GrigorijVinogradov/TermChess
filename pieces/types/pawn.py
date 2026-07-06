@@ -14,12 +14,9 @@ class Pawn(Piece):
         self.color = color
 
     def validate_movement_pattern(self, from_coord: Coordinates, to_coord: Coordinates):
-        direction = 1
-        if self.color is Color.Black:
-            direction = -1
+        direction = self.determine_direction()
 
-        if to_coord.d == from_coord.d - 2*direction and self.step_count == 0:
-            check_collision(get_straight_colliding_piece, from_coord, to_coord, self.color)
+        if self.is_valid_two_field_step(from_coord, to_coord):
             self.step_count += 1 
             return
 
@@ -29,3 +26,19 @@ class Pawn(Piece):
         check_collision(get_direct_colliding_piece, from_coord, to_coord, self.color)
 
         self.step_count += 1
+
+    def is_valid_two_field_step(self, from_coord: Coordinates, to_coord: Coordinates) -> bool:
+        direction = self.determine_direction()
+
+        if to_coord.d == from_coord.d - 2*direction and self.step_count == 0:
+            check_collision(get_straight_colliding_piece, from_coord, to_coord, self.color)
+            return True
+
+        return False
+
+    def determine_direction(self) -> int:
+        direction = 1
+        if self.color is Color.Black:
+            direction = -1
+
+        return direction
