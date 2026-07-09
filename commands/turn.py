@@ -3,13 +3,12 @@ import re
 from board.board import Board
 from board.coordinates import Coordinates
 from commands.command import Command
-from pieces.enums.colors import Color
 from pieces.piece import Piece
 from util.current_color_keeper import Current_Color_Keeper
 from util.step_history import Step_History
 
 class Turn(Command):
-    name: str = 'basecommand'
+    name: str = 'turn'
     counts_as_turn: bool = True
 
     def execute_command(self, input: str):
