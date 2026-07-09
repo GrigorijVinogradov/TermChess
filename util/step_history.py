@@ -19,5 +19,6 @@ class Step_History():
         for entry in self.history:
             result += entry[0].to_string()
             result += entry[1].to_string()
+            result += ' '
 
         return result
