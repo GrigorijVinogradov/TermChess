@@ -1,6 +1,7 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
 from commands.command import Command
+from commands.gethistory import Get_History
 from commands.turn import Turn
 import pieces.enums.colors as Colors
 from util.current_color_keeper import Current_Color_Keeper
@@ -22,7 +23,10 @@ def turn():
 
 board_initializer.initialize_board()
 
-command_list = [ Command() ]
+command_list = [ 
+    Command(),
+    Get_History(),
+]
 
 color_keeper = Current_Color_Keeper()
 
