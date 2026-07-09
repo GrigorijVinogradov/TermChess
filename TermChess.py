@@ -1,9 +1,8 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
 from commands.command import Command
-from commands.gethistory import Get_History
+from commands.command_list import Command_List
 from commands.turn import Turn
-import pieces.enums.colors as Colors
 from util.current_color_keeper import Current_Color_Keeper
 
 def turn():
@@ -12,7 +11,7 @@ def turn():
     while(was_turn_made == False):
         turn_input = input(current_color.name + "s Turn: ")
         command_to_execute: Command = Turn()
-        for com in command_list:
+        for com in Command_List:
             if com.name == turn_input:
                 command_to_execute = com
         try:
@@ -22,11 +21,6 @@ def turn():
             print("Invalid Turn! " + str(e))
 
 board_initializer.initialize_board()
-
-command_list = [ 
-    Command(),
-    Get_History(),
-]
 
 while True:
     board_renderer.render_board()
