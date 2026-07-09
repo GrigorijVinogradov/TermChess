@@ -2,8 +2,8 @@ from pieces.enums.colors import Color
 
 
 class Command():
-    name: str = 'basecommand'
+    name: str = 'helloworld'
     counts_as_turn: bool = False
 
-    def execute_command(self, input: str, current_color: Color):
+    def execute_command(self, input: str):
         print("Hello World!")

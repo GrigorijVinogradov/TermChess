@@ -5,15 +5,17 @@ from board.coordinates import Coordinates
 from commands.command import Command
 from pieces.enums.colors import Color
 from pieces.piece import Piece
+from util.current_color_keeper import Current_Color_Keeper
 from util.step_history import Step_History
 
 class Turn(Command):
     name: str = 'basecommand'
     counts_as_turn: bool = True
 
-    def execute_command(self, input: str, current_color: Color):
+    def execute_command(self, input: str):
         board = Board()
         step_history = Step_History()
+        current_color = Current_Color_Keeper().get_current_color()
         self.validate_order(input, current_color)
         parsed_input = self.parse_input(input)
         from_coords = Coordinates(parsed_input[0], parsed_input[1]) 
