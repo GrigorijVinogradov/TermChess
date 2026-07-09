@@ -14,13 +14,15 @@ class Turn(Command):
     def execute_command(self, input: str):
         board = Board()
         step_history = Step_History()
-        current_color = Current_Color_Keeper().get_current_color()
+        current_color_keeper = Current_Color_Keeper()
+        current_color = current_color_keeper.get_current_color()
         self.validate_order(input, current_color)
         parsed_input = self.parse_input(input)
         from_coords = Coordinates(parsed_input[0], parsed_input[1]) 
         to_coords = Coordinates(parsed_input[2], parsed_input[3])
         board.move_piece(from_coords, to_coords)
         step_history.add_to_history(from_coords, to_coords)
+        current_color_keeper.toggle_color()
 
     def parse_input(self, turn_input):
         self.validate_input(turn_input)

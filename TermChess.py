@@ -7,7 +7,7 @@ import pieces.enums.colors as Colors
 from util.current_color_keeper import Current_Color_Keeper
 
 def turn():
-    current_color = color_keeper.get_current_color()
+    current_color = Current_Color_Keeper().get_current_color()
     was_turn_made = False
     while(was_turn_made == False):
         turn_input = input(current_color.name + "s Turn: ")
@@ -28,10 +28,7 @@ command_list = [
     Get_History(),
 ]
 
-color_keeper = Current_Color_Keeper()
-
 while True:
     board_renderer.render_board()
     turn()
-    color_keeper.toggle_color()
     
