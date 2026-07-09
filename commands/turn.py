@@ -11,13 +11,13 @@ class Turn(Command):
     name: str = 'turn'
     counts_as_turn: bool = True
 
-    def execute_command(self, input: str):
+    def execute_command(self, player_input: str):
         board = Board()
         step_history = Step_History()
         current_color_keeper = Current_Color_Keeper()
         current_color = current_color_keeper.get_current_color()
-        self.validate_order(input, current_color)
-        parsed_input = self.parse_input(input)
+        self.validate_order(player_input, current_color)
+        parsed_input = self.parse_input(player_input)
         from_coords = Coordinates(parsed_input[0], parsed_input[1]) 
         to_coords = Coordinates(parsed_input[2], parsed_input[3])
         board.move_piece(from_coords, to_coords)
