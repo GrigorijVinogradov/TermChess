@@ -31,6 +31,10 @@ class Pawn(Piece):
     def is_valid_two_field_step(self, from_coord: Coordinates, to_coord: Coordinates) -> bool:
         direction = self.determine_direction()
 
+        l_distance = abs(from_coord.l - to_coord.l)
+        if l_distance != 0:
+            raise ValueError("The pawn can only move straight forward")
+
         if to_coord.d == from_coord.d - 2*direction and self.step_count == 0:
             check_collision(get_straight_colliding_piece, from_coord, to_coord, self.color)
             return True
