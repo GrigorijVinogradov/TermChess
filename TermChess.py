@@ -11,7 +11,7 @@ def turn(current_color: Colors.Color):
     board = Board()
     was_turn_made = False
     while(was_turn_made == False):
-        turn_input = input("Turn: ")
+        turn_input = input(str(current_color.name) + " Turn: ")
         try:
             validate_order(turn_input, current_color)
             parsed_input = parse_input(turn_input)
