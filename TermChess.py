@@ -12,7 +12,7 @@ def turn():
         turn_input = input(current_color.name + "s Turn: ")
         command_to_execute: Command = Turn()
         for com in Command_List:
-            if com.name == turn_input:
+            if turn_input.startswith(com.name):
                 command_to_execute = com
         try:
             command_to_execute.execute_command(turn_input)
