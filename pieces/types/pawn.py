@@ -6,6 +6,7 @@ from pieces.piece import Piece
 from pieces.enums.piece_icons import Piece_Icons
 from pieces.enums.colors import Color
 from util.step_counter import Step_Counter
+from util.step_history import Step_History
 
 class Pawn(Piece):
     icon = Piece_Icons.pawn
@@ -50,8 +51,27 @@ class Pawn(Piece):
         if l_dist == 1:
             board = Board()
             attacked_piece = board.get_piece(to_coord)
+            if self.is_en_passant(from_coord, to_coord):
+                last_turn = Step_History().get_last_turn()
+                en_passented_pawn_coordinates = last_turn[1]
+                board.unset_piece(en_passented_pawn_coordinates)
+                return
             if attacked_piece == '' or attacked_piece.color == self.color:
                 raise ValueError("Can only move diagonally if attacking")
+
+    def is_en_passant(self, from_coord: Coordinates, to_coord: Coordinates):
+        last_turn = Step_History().get_last_turn()
+        direction = self.determine_direction()
+        required_last_from_coord = Coordinates(to_coord.d-direction, to_coord.l)
+        required_last_to_coord = Coordinates(from_coord.d, to_coord.l)
+
+        was_last_step_en_passantable = required_last_from_coord.equals(last_turn[0]) and required_last_to_coord.equals(last_turn[1])
+
+        board = Board()
+        attacked_piece = board.get_piece(last_turn[1])
+        was_piece_enemy_pawn = isinstance(attacked_piece, Pawn) and attacked_piece.color != self.color
+
+        return was_last_step_en_passantable and was_piece_enemy_pawn
 
     def determine_direction(self) -> int:
         direction = 1
