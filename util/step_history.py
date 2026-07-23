@@ -14,6 +14,9 @@ class Step_History():
     def add_to_history(self, from_coords: Coordinates, to_coords: Coordinates):
         self.history.append((from_coords, to_coords))
 
+    def get_last_turn(self):
+        return self.history[-1]
+
     def history_as_string(self):
         result = ''
         for entry in self.history:

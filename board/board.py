@@ -20,13 +20,16 @@ class Board:
         from_piece: Piece = self.get_piece(from_coords)
         from_piece.validate_movement_pattern(from_coords, to_coords)
         self.set_piece(to_coords, from_piece)
-        self.set_piece(from_coords, '')
+        self.unset_piece(from_coords)
 
     def get_piece(self, coordinates: Coordinates) -> Piece:
         return self.board_map[coordinates.d][coordinates.l]
 
-    def set_piece(self, coordinates: Coordinates, piece):
+    def set_piece(self, coordinates: Coordinates, piece: Piece):
         self.board_map[coordinates.d][coordinates.l] = piece 
+
+    def unset_piece(self, coordinates: Coordinates):
+        self.board_map[coordinates.d][coordinates.l] = ''
 
     def get_board_map(self) -> list[list[Piece]]:
         return self.board_map
