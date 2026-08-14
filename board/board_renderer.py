@@ -1,6 +1,7 @@
 from board.board import Board
 from board.constants import board_constants
 import os
+import platform
 from pieces.enums.colors import Color
 from pieces.piece import Piece
 
@@ -20,7 +21,7 @@ def decide_square(board_map, row, column):
 
 # Main ☆*: .｡. o(≧▽≦)o .｡.:*☆
 def render_board():
-    os.system('cls')
+    clear_screen()
     board = Board()
     board_map = board.get_board_map()
     for row, i in enumerate(board_map):
@@ -32,3 +33,10 @@ def render_board():
     
     print("  A B C D E F G H")
     print()
+
+def clear_screen():
+    system = platform.system()
+    if system == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
