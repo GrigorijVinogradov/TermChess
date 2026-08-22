@@ -4,6 +4,7 @@ import os
 import platform
 from pieces.enums.colors import Color
 from pieces.piece import Piece
+from util.screen_clearer import clear_screen
 
 def is_even(number):
     return number % 2 == 0
@@ -34,9 +35,3 @@ def render_board():
     print("  A B C D E F G H")
     print()
 
-def clear_screen():
-    system = platform.system()
-    if system == "Windows":
-        os.system('cls')
-    else:
-        os.system('clear')
