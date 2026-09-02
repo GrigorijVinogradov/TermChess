@@ -7,7 +7,7 @@ class Exit(Command):
     description: str = 'Exits the Program'
     counts_as_turn: bool = False
 
-    def execute_command(self, _):
+    def execute_command(self, _player_input):
         clear_screen()
         sys.exit()
 
