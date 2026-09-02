@@ -7,6 +7,7 @@ from commands.turn import Turn
 
 class Play_Sequence(Command):
     name: str = 'playsequence'
+    description: str = 'Plays a sequence of Steps, which are notated like regular moves after the command'
     counts_as_turn: bool = True
 
     def execute_command(self, player_input: str):
