@@ -16,5 +16,5 @@ class Piece():
         else:
             return self.icon.value
 
-    def validate_movement_pattern(self, from_coord: Coordinates, to_coord: Coordinates):
+    def validate_movement_pattern(self, from_coord: Coordinates, to_coord: Coordinates) -> None:
         raise ValueError("Blank Piece shouldn't move")
