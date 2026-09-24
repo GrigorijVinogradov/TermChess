@@ -5,7 +5,6 @@ from commands.playsequence import Play_Sequence
 
 
 Command_List = [ 
-    Command(),
     Exit(),
     Get_History(),
     Play_Sequence(),

@@ -1,6 +1,7 @@
 import board.board_initializer as board_initializer
 import board.board_renderer as board_renderer
 from commands.command import Command
+from commands.help import Help
 from commands.command_list import Command_List
 from commands.turn import Turn
 from util.current_color_keeper import Current_Color_Keeper
@@ -21,6 +22,7 @@ def turn():
             print("Invalid Turn! " + str(e))
 
 board_initializer.initialize_board()
+Command_List.append(Help())
 
 while True:
     board_renderer.render_board()
